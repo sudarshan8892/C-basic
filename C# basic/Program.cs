@@ -35,6 +35,23 @@ namespace CSharpBasic
             Console.WriteLine(num[0]);
             Console.WriteLine(num[1]);
             Console.WriteLine(num[2]);
+
+
+
+            // string  demo 
+
+            var FirstName = "sudarshan";
+            var LastName = "shetty";
+
+            Console.WriteLine("my Name Is:"+ FirstName +" "+ LastName );
+            var FullName = String.Format("My name IS: {0} {1}", FirstName, LastName);
+            Console.WriteLine( FullName );
+
+            string[] Name= new string[3];//decalear Array 1
+            var Names = new string[3] { "sudarshan", "shetty", "shetty" };//decalear Array 2
+            string[] NamesFormate =  { "sudarshan", "shetty", "shetty" };//decalear Array 3
+            var NAmeformate = String.Join(",", NamesFormate);
+            Console.WriteLine( NAmeformate);
         }
     }
 }
