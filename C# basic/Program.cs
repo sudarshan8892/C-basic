@@ -1,5 +1,7 @@
 ﻿using CSharpBasic.Math;
 using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 namespace CSharpBasic
 {
     class program
@@ -52,6 +54,63 @@ namespace CSharpBasic
             string[] NamesFormate =  { "sudarshan", "shetty", "shetty" };//decalear Array 3
             var NAmeformate = String.Join(",", NamesFormate);
             Console.WriteLine( NAmeformate);
+
+            var text = @"hi shetty
+            look at this
+            c:\folder1\folder2
+            c:\folder1\n folder2";
+            Console.WriteLine(text);
+
+
+
+            //conditionals
+            int hour = 10;
+            if(hour>0 && hour<=10)
+            {
+                Console.WriteLine("its morning");
+            }
+            else if(hour>12 &&  hour <18)
+            {
+                Console.WriteLine( "its afternoon");
+            }
+            else
+            {
+                Console.WriteLine("its night!");
+            }
+
+            bool isGoldcustomer = true;
+            float prices;
+            if(isGoldcustomer)
+            {
+                prices = 20.88f;
+            }
+            else
+            {
+                prices = 30.00f;
+            }
+            Console.WriteLine(prices);
+            float price = (isGoldcustomer) ? 20.88f : 30.00f;
+            Console.WriteLine(prices);
+
+            //switch case
+            var card = Card.gold;
+            switch(card)
+            {
+                case Card.gold:
+                    Console.WriteLine(  "its  gold ");
+                    break;
+
+
+                case Card.siliver:
+                    Console.WriteLine(  "its siliver");
+                    break;
+                default:
+                    Console.WriteLine( "no type card");
+                    break;
+
+
+            }
+
         }
     }
 }
