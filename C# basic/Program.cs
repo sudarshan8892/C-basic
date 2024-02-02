@@ -124,6 +124,13 @@ namespace CSharpBasic
                 Console.WriteLine( "Invlid input . pls  enter a num btw 1 to 10:");
 
             }
+
+            Console.WriteLine("enter  a number:");
+            var temp1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter a number :");
+            int temp2 = int.Parse(Console.ReadLine());
+            maxnum.compare(temp1,temp2);
+            
         }
     }
 }
