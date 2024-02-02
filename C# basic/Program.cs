@@ -98,19 +98,32 @@ namespace CSharpBasic
             {
                 case Card.gold:
                     Console.WriteLine(  "its  gold ");
-                    break;
+                break;
 
 
                 case Card.siliver:
                     Console.WriteLine(  "its siliver");
-                    break;
+                break;
                 default:
                     Console.WriteLine( "no type card");
-                    break;
+                break;
 
+
+
+                   
+            }
+            Console.Write("enter  a number between  1 to 10 : ");
+            try
+            {
+
+                int input = int.Parse(Console.ReadLine());
+                exercises.validate(input);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine( "Invlid input . pls  enter a num btw 1 to 10:");
 
             }
-
         }
     }
 }
