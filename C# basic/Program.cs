@@ -124,13 +124,23 @@ namespace CSharpBasic
                 Console.WriteLine( "Invlid input . pls  enter a num btw 1 to 10:");
 
             }
-
+            //exercises3
             Console.WriteLine("enter  a number:");
             var temp1 = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter a number :");
             int temp2 = int.Parse(Console.ReadLine());
             maxnum.compare(temp1,temp2);
-            
+
+            Console.WriteLine("type in the width of  an image to know if its on  landscape or portrait: ");
+            Console.WriteLine(  "width:");
+            var width = int.Parse(Console.ReadLine());
+
+            Console.WriteLine( "Height:");
+            var height = int.Parse(Console.ReadLine());
+
+            Console.WriteLine( exercises3.getImage(width,height));
+
+
         }
     }
 }
