@@ -141,6 +141,14 @@ namespace CSharpBasic
             Console.WriteLine( exercises3.getImage(width,height));
 
 
+
+            Console.WriteLine(  "Enter the speed limit Km/hr:  ");
+            int  speedlimit = int.Parse(Console.ReadLine());
+
+            Console.WriteLine( "Enter the  speed of the car (KM/hr):");
+            int carSpeed = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(exercisis4.speedLimit(speedlimit, carSpeed));
         }
     }
 }
