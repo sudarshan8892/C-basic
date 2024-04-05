@@ -7,4 +7,34 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="obj\Debug\net8.0\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net8.0\OOPS.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net8.0\OOPS.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net8.0\OOPS.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\net8.0\OOPS.sourcelink.json" />
+    <Content Include="obj\OOPS.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net8.0\apphost.exe" />
+    <None Include="obj\Debug\net8.0\OOPS.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net8.0\OOPS.assets.cache" />
+    <None Include="obj\Debug\net8.0\OOPS.csproj.BuildWithSkipAnalyzers" />
+    <None Include="obj\Debug\net8.0\OOPS.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net8.0\OOPS.dll" />
+    <None Include="obj\Debug\net8.0\OOPS.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net8.0\OOPS.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net8.0\OOPS.pdb" />
+    <None Include="obj\Debug\net8.0\refint\OOPS.dll" />
+    <None Include="obj\Debug\net8.0\ref\OOPS.dll" />
+    <None Include="obj\OOPS.csproj.nuget.g.props" />
+    <None Include="obj\OOPS.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
 </Project>
