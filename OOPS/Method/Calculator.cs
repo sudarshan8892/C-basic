@@ -1,4 +1,6 @@
-﻿namespace OOPS.Method
+﻿using System.Linq;
+
+namespace OOPS.Method
 {
     public partial class ProgramMethod
     {
