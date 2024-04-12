@@ -19,8 +19,15 @@ namespace DbConnection
 
             oracleConnection.opening();
             oracleConnection.closed();
-            stopwatch.Stop();
+         
             Console.WriteLine( "time"+ stopwatch.ElapsedMilliseconds +" ms" );
+
+            var dbcommand =  new DbCommand(sqlConnection, "select * from table");
+            var dbarclecomamd = new DbCommand(oracleConnection, "Select * from #table");
+            dbcommand.Execute();
+            dbarclecomamd.Execute();
+            stopwatch.Stop();
+
 
         }
     }
