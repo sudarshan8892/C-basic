@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpBasic", "C# basic\CSh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPS", "OOPS\OOPS.csproj", "{29506195-2B33-41A5-AF1D-F192397206F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{57A1A37A-AB29-492F-9615-B2A3239614A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{57A1A37A-AB29-492F-9615-B2A3239614A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface_Logger", "Interface_Logger\Interface_Logger.csproj", "{33CB7E75-DD63-4389-B9ED-02087581589E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interface_Logger", "Interface_Logger\Interface_Logger.csproj", "{33CB7E75-DD63-4389-B9ED-02087581589E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodOverrid", "MethodOverrid\MethodOverrid.csproj", "{6C86F209-6CA5-48E9-AEB4-C49B0655FD4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractClass", "AbstractClass\AbstractClass.csproj", "{EE62F194-EB88-4322-B37B-1013A9FA6614}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{33CB7E75-DD63-4389-B9ED-02087581589E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33CB7E75-DD63-4389-B9ED-02087581589E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33CB7E75-DD63-4389-B9ED-02087581589E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C86F209-6CA5-48E9-AEB4-C49B0655FD4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C86F209-6CA5-48E9-AEB4-C49B0655FD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C86F209-6CA5-48E9-AEB4-C49B0655FD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C86F209-6CA5-48E9-AEB4-C49B0655FD4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE62F194-EB88-4322-B37B-1013A9FA6614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE62F194-EB88-4322-B37B-1013A9FA6614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE62F194-EB88-4322-B37B-1013A9FA6614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE62F194-EB88-4322-B37B-1013A9FA6614}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
