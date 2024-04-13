@@ -1,19 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using NLog;
+using NLogger.Data;
+using NLogger.Login;
 using NLogger.Models;
+using NLogger.Register;
 using System.Diagnostics;
+using System.Security.Cryptography.Xml;
 
 namespace NLogger.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly AppDbContext _dbContext;
+
         private Logger logger { get; }
 
-        public HomeController()
+        public HomeController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, AppDbContext dbContext)
         {
             logger = LogManager.GetCurrentClassLogger();
-          
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _dbContext = dbContext;
         }
+
+
 
         public IActionResult Index()
         {
@@ -26,13 +40,84 @@ namespace NLogger.Controllers
 
             return View();
         }
+        [HttpGet]
         public IActionResult Register()
         {
 
             return View();
         }
 
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            JsonViewModel viewModel = new();
 
+            return new JsonResult(viewModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            JsonViewModel viewModel = new();
+            ApplicationUser _appUsers= new ApplicationUser();   
+            try
+            {
+                var user= new ApplicationUser
+                {
+                    UserName = model.FirstName + "" + model.LastName,
+                    Email = model.UserName,
+                    EmailConfirmed = false
+
+                };
+                var Result = await _userManager.CreateAsync(_appUsers, model.Password);
+                if (Result.Succeeded)
+                {
+                    //insert userprofile
+                    UserProfile _Userprofile = new UserProfile
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        PhoneNumber = "892999541",
+                        Email = model.UserName,
+                        Address = "Bangalore",
+                        Country = "India",
+                        ApplicationUserId = _appUsers.Id,
+
+                        CreatedDate = DateTime.Now,
+                        ModifiedDate = DateTime.Now,
+                        CreatedBy = HttpContext.User.Identity.Name,
+                        ModifiedBy = HttpContext.User.Identity.Name
+
+                    };
+                    var Result2 = await _dbContext.UserProfiles.AddAsync(_Userprofile);
+                    await _dbContext.SaveChangesAsync();
+                    viewModel.AlertMessage = "User Created Successfully. User Name: " + _appUsers.UserName;
+                    viewModel.IsSuccess = true;
+                    return new JsonResult(viewModel);
+                }
+                else
+                {
+                    logger.Error("Your error message here");
+
+                    logger.Error("Failed to create user. Errors: " + string.Join(", ", Result.Errors.Select(e => e.Description)));
+
+                    logger.WithProperty("tags", $"Trasfer Equipment Approved datetime {DateTime.Now} and {_appUsers.Id}")
+                          .WithProperty("params", JsonConvert.SerializeObject("_appUsers"))
+                          .Trace($"Equipment History Approved by {_appUsers.Id}.");
+                    viewModel.AlertMessage = "User Created Successfully. User Name: " + _appUsers.UserName;
+                    viewModel.IsSuccess = true;
+                    return new JsonResult(viewModel);
+                }
+            }
+            catch (Exception)
+            {
+                await Console.Out.WriteLineAsync("");
+                logger.WithProperty("tags", $"Trasfer Equipment Approved datetime {DateTime.Now} and {_appUsers.Id}")
+                         .WithProperty("params", JsonConvert.SerializeObject(""))
+                         .Trace($"Equipment History Approved by {_appUsers.Id}.");
+                return new JsonResult(viewModel);
+
+            }
+
+        }
         public IActionResult Privacy()
         {
             return View();
