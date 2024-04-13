@@ -34,7 +34,7 @@ namespace OOPS.costructors
         {
             var c = new Customer(1, "shetty");
             var order = new Order();
-            c.order.Add(order); 
+            //c.order.Add(order); 
            
           
             Console.WriteLine( c.Name);

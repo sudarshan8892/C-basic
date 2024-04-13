@@ -1,0 +1,118 @@
+﻿@model NLogger.Register.RegisterModel
+<div class=" container-fluid">
+    <div class="col-xs-12 col-lg-5">
+        <form id="Registerform">
+            <div class=" container-fluid">
+
+                <label asp-for="FirstName"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="FirstName" type="text" class="form-control" placeholder="Firts Name" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" container-fluid">
+
+                <label asp-for="FirstName"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" container-fluid">
+
+                <label asp-for="UserName"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="UserName" type="email" class="form-control" placeholder="Email" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" container-fluid">
+
+                <label asp-for="Password"></label>
+                <div class="input-group mb-3">
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-4">
+                <input type="button" id="btnregister" onclick="RegisterNewUser()" value="Register" class="btn btn-primary btn-block" />
+            </div>
+
+
+
+        </form>
+
+       
+
+    </div>
+</div>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+ @section Scripts {
+    @await Html.PartialAsync("_ScriptsPartial")
+}
+<script type="text/javascript">
+
+    var RegisterNewUser = function () {
+         alert("click");
+        if (!$("#Registerform").valid())
+        {
+            return;
+        }
+        alert("okay");
+        var _register = $("#Registerform").serialize();
+        console.log(_register);
+        $("#btnregister").prop("disabled", true);
+        $("#btnregister").val("Registering...");
+        $("#btnregister").LoadingOverlay("show");
+        $.ajax(
+            {
+
+                type: "Post",
+                url: "/Home/Register",
+                data: _register,
+             
+                success: function (result)
+                {
+                    $("#btnregister").LoadingOverlay("hide", true);
+                    $('#btnregister').removeAttr('disabled');
+                    $("#btnregister").val("Register");
+                    if (result.isSuccess) {
+                        alert("hello");
+                    } else {
+                        alert("error");
+                    }
+
+                },
+                error: function () 
+                {
+
+                    $("#btnRegister").val("Register");
+                    $('#btnRegister').removeAttr('disabled');
+                    alert("An error occurred while processing your request.");
+
+                }
+            });
+
+    }
+</script>
