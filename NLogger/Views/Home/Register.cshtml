@@ -73,48 +73,4 @@
  @section Scripts {
     @await Html.PartialAsync("_ScriptsPartial")
 }
-<script type="text/javascript">
 
-    var RegisterNewUser = function () {
-         alert("click");
-        if (!$("#Registerform").valid())
-        {
-            return;
-        }
-        alert("okay");
-        var _register = $("#Registerform").serialize();
-        console.log(_register);
-        $("#btnregister").prop("disabled", true);
-        $("#btnregister").val("Registering...");
-        $("#btnregister").LoadingOverlay("show");
-        $.ajax(
-            {
-
-                type: "Post",
-                url: "/Home/Register",
-                data: _register,
-             
-                success: function (result)
-                {
-                    $("#btnregister").LoadingOverlay("hide", true);
-                    $('#btnregister').removeAttr('disabled');
-                    $("#btnregister").val("Register");
-                    if (result.isSuccess) {
-                        alert("hello");
-                    } else {
-                        alert("error");
-                    }
-
-                },
-                error: function () 
-                {
-
-                    $("#btnRegister").val("Register");
-                    $('#btnRegister').removeAttr('disabled');
-                    alert("An error occurred while processing your request.");
-
-                }
-            });
-
-    }
-</script>

@@ -12,6 +12,6 @@ namespace NLogger.Data
                 
         }
          public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-         public DbSet<UserProfile> UserProfiles { get; set; }
+         public DbSet<UserProfile> UserProfile { get; set; }
     }
 }
