@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="form-control">
+        <h1>Home page</h1>
+        @Html.ActionLink("Login", "Login", "APPUsers", new { @class = "btn btn-primary" });
+    </div>
+    <div class="home_page_footer">
+        <div class="footer_content">
+            Copyright © @DateTime.Now.ToString("MM/dd/yyyy") <b>DFW Security</b> | All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>
