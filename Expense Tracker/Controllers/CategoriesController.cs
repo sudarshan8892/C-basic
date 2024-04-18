@@ -41,7 +41,7 @@ namespace Expense_Tracker.Controllers
                 {
                     _context.Add(category);
                 }
-                else 
+                else
                     _context.Update(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -50,5 +50,19 @@ namespace Expense_Tracker.Controllers
             return View(new Category());
 
         }
+        [HttpPost]
+        public async Task<IActionResult>Delete(int id)
+        {
+            if (_context.categories == null)
+            {
+                return Problem("no category");
+            }
+            var category = await _context.categories.FindAsync(id);
+            if (category != null)
+                _context.categories.Remove(category);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
+
 }

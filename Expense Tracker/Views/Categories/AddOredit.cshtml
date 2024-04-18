@@ -1,12 +1,14 @@
 ﻿@model Expense_Tracker.Models.Category
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = @Model.CategoryId == 0 ? "New Category" : "Edit Category";
 }
 
 <div class="row">
     <div class="col-md-7">
         <div class="Widget p-5">
+
+
             <form asp-action="AddOredit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="CategoryId" value="@Model.CategoryId" />
@@ -36,7 +38,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="submit" class="btn btn-primary" />
                 </div>
             </form>
             <div class="mb-1 mt-1">
