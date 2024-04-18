@@ -1,0 +1,59 @@
+﻿@model Expense_Tracker.Models.Transcation
+
+@{
+    ViewData["Title"] = @Model.Id == 0 ? "New Transcation" : "Edit Transcation";
+}
+<div class="row">
+    <div class="col-md-7">
+        <div class="Widget p-5">
+            <form asp-action="AddOredit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="Id" value="@Model.Id" />
+
+                @*     <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+                </div> *@
+                <div class="mb-3">
+                    @*  <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" /> *@
+                    <ejs-datepicker id="Date" ejs-for="Date" placeholder="Date" floatLabelType="Always" format="MMM-dd-yy"></ejs-datepicker>
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="CategoryId" ejs-for="CategoryId" allowFiltering=true dataSource="@ViewBag.categoryforView">
+                        <e-dropdownlist-fields text="Title" value="CategoryId"></e-dropdownlist-fields>
+
+                    </ejs-dropdownlist>
+
+                    @*  <label asp-for="CategoryId" class="control-label"></label>
+                    <input asp-for="CategoryId" class="form-control" /> *@
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <ejs-numerictextbox id="Amount" ejs-for="Amount" placeholder="Amount" floatLabelType="Always" format="C0" min="0"></ejs-numerictextbox>
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="Note" placeholder="Note" ejs-for="Note" floatLabelType="Always" multiline="true" ></ejs-textbox>
+
+                    <span asp-validation-for="Note" class="text-danger"></span>
+                </div>
+                <div class="mb-3 mt-1">
+                    <input type="submit" value="submit" class="btn btn-primary" />
+                </div>
+                <div class="mb-1 mt-1">
+                    <a asp-action="Index" class="btn btn-info">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="Widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
+

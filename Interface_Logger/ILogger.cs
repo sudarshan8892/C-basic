@@ -9,10 +9,10 @@
             void LogError(string message);
             void LogInfo(string message);
 
-            public void newmethod()
-            {
-                Console.WriteLine("");
-            }
+            //public void newmethod()
+            //{
+            //    Console.WriteLine("");
+            //}
 
     }
 }

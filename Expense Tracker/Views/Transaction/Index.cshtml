@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Expense_Tracker.Models.Transcation>
+
+@{
+    ViewData["PageTitle"] = "Transaction";
+  
+}
+<div class="row">
+    <div class="col-md-7">
+        <p>
+            <a asp-action="AddOredit" class="btn btn-primary">Create New</a>
+        </p>
+        <ejs-grid id="Category" dataSource="@Model" allowPaging=true allowSorting=true>
+            <e-grid-pagesettings pagesize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headertext="CategoryId" field="Title"></e-grid-column>
+                <e-grid-column headertext="Note" field="Icon"></e-grid-column>
+                <e-grid-column headertext="Amount" field="Icon"></e-grid-column>
+
+                <e-grid-column headertext="Date" template="#Type" field="Type"></e-grid-column>
+                <e-grid-column headertext="Actions" template="#actionTemplate" width="150"></e-grid-column>
+
+            </e-grid-columns>
+        </ejs-grid>
+
+    </div>
+    <div class="col-md-5">
+        <div class="Widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-shapes fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@* <table class="table">
+    <thead>
+        <tr>
+             <th>
+            @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                  <td>
+            @Html.DisplayFor(modelItem => item.Id)
+            </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    <a asp-action="AddOredit" class="btn btn-info" asp-route-id="@item.Id">Edit</a>
+                    <a href="/Transaction/AddOredit/@(item.Id)" class="btn btn-info"><i class="fa-solid fa-pen fa-lg"></i> </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@
