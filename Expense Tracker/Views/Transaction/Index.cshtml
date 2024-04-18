@@ -2,7 +2,7 @@
 
 @{
     ViewData["PageTitle"] = "Transaction";
-  
+
 }
 <div class="row">
     <div class="col-md-7">
@@ -12,11 +12,12 @@
         <ejs-grid id="Category" dataSource="@Model" allowPaging=true allowSorting=true>
             <e-grid-pagesettings pagesize="5"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headertext="CategoryId" field="Title"></e-grid-column>
-                <e-grid-column headertext="Note" field="Icon"></e-grid-column>
-                <e-grid-column headertext="Amount" field="Icon"></e-grid-column>
+                <e-grid-column headertext="CategoryId" field="categorywithIcon"></e-grid-column>
+                @* <e-grid-column headertext="Note" field="Note"></e-grid-column>*@
 
-                <e-grid-column headertext="Date" template="#Type" field="Type"></e-grid-column>
+                <e-grid-column headertext="Amount" field="amount_symbol"></e-grid-column>
+
+                <e-grid-column headertext="Date" format="MMM-dd-yy" field="Date"></e-grid-column>
                 <e-grid-column headertext="Actions" template="#actionTemplate" width="150"></e-grid-column>
 
             </e-grid-columns>
@@ -29,6 +30,18 @@
         </div>
     </div>
 </div>
+<script id="actionTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+    <a href="/Transaction/AddOredit/${Id}" class="btn btn-info"><i class="fa-solid fa-pen fa-lg"></i> </a>
+     <form action="/Transaction/Delete/${CategoryId}" method="post">
+          <button type="submit" class="btn btn-sm btn-link no-a-decoration"
+          onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
+              <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+          </button>
+      </form>
+      </div>
+
+</script>
 
 @* <table class="table">
     <thead>
@@ -54,7 +67,7 @@
             <tr>
                   <td>
             @Html.DisplayFor(modelItem => item.Id)
-            </td> 
+            </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CategoryId)
                 </td>

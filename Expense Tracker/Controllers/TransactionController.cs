@@ -39,6 +39,10 @@ namespace Expense_Tracker.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOredit(Transcation transaction)
         {
+            if (transaction.CategoryId == 0)
+            {
+                ModelState.AddModelError("CategoryId", "The Category field is required");
+            }
 
 
             if (ModelState.IsValid)
@@ -75,8 +79,8 @@ namespace Expense_Tracker.Controllers
         public void CategoryIds()
         {
             var category = _dbContext.categories.ToList();
-            Category categorys = new Category() { CategoryId = 0, Title = "chose the category" };
-            category.Insert(0, categorys);
+            Category defaultCategory = new Category() { CategoryId = 0, Title = "Choose the category" };
+            category.Insert(0, defaultCategory);
             ViewBag.categoryforView = category;
         }
 
