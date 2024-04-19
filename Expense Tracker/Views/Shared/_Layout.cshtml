@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
     <script src="https://cdn.syncfusion.com/ej2/20.1.55/dist/ej2.min.js"></script>
 
 </head>
 <body>
+   <partial name="_SideBar" />
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -34,30 +36,39 @@
             </div>
         </nav>
     </header>
+    <div class="Main-content">
     <div class="container mt-5">
         <div class="row justify-content-center">
 
-            <div class="col-md-10">
+                <div class="@(ViewData["Dashbord"] == null?"col-md-10":"col-md-12")">
                 <main role="main" class="pb-3">
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="d-flex flex-column mb-5">
-                                <div class="d-flex mb-1">
-                                    <div class="flex-grow-1">
-                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                        @if(ViewData["Dashbord"] == null){
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="d-flex flex-column mb-5">
+                                        <div class="d-flex mb-1">
+                                            <div class="flex-grow-1">
+                                                <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                            </div>
+                                            <div>
+                                                @*    @if (ViewData["PageActionText"] != null)
+                                        {
+                                            <a class=" btn btn-success" href="@ViewData["PageActionUrl"]" @ViewData["PageActionText"]></a>
+                                        }*@
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div>
-                                    </div>
+                                    @* <ejs-breadcrumb id="Expense"> </ejs-breadcrumb>*@
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    @RenderBody()
+                        }
+                        @RenderBody()
                 </main>
             </div>
         </div>
 
+    </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

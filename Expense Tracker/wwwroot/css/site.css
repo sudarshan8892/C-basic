@@ -46,3 +46,9 @@ body {
     color: #fff;
    
 }
+.Main-content{
+   margin-left:200px
+}
+.Widget.chart {
+    padding: 5px;
+}
