@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Expense_Tracker.Models
 {
-    public class Transcation
+    public class Transcation:DateRange
     {
         public int Id { get; set; }
         [Required (ErrorMessage = "The Category field is required")]
@@ -20,8 +20,8 @@ namespace Expense_Tracker.Models
         {
             get
             {
-                return Category == null ? "" : Category.Title;
-                    //"" + Category.Title;
+                return Category == null ? "" : Category.Title +
+                    "" + Category.Icon;
             }
         }
         [NotMapped]

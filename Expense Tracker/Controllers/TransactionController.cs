@@ -34,7 +34,7 @@ namespace Expense_Tracker.Controllers
                 return View(new Transcation());
             }
             else
-           return View( _dbContext.transcations.Find(id));
+                return View(_dbContext.transcations.Find(id));
         }
         [HttpPost]
         public async Task<IActionResult> AddOredit(Transcation transaction)
@@ -52,7 +52,7 @@ namespace Expense_Tracker.Controllers
                     _dbContext.Add(transaction);
                 }
                 else
-                _dbContext.Update(transaction);
+                    _dbContext.Update(transaction);
                 await _dbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -81,9 +81,15 @@ namespace Expense_Tracker.Controllers
             var category = _dbContext.categories.ToList();
             Category defaultCategory = new Category() { CategoryId = 0, Title = "Choose the category" };
             category.Insert(0, defaultCategory);
-            ViewBag.categoryforView = category;
+            try
+            {
+                ViewBag.categoryforView = category;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
-
     }
 }
 

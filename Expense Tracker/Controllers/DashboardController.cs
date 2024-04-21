@@ -15,12 +15,22 @@ namespace Expense_Tracker.Controllers
         {
             _dbcontext = expenseDb;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DateRange date)
         {
-            DateTime startDate = DateTime.Today.AddDays(-6);
-           
             DateTime endDate = DateTime.Today;
+            DateTime startDate = endDate.AddDays(-7);
+
+            if (date != null && date.value != null && date.value.Count == 2)
+            {
+                startDate = date.value[0];
+                endDate = date.value[1];
+
+            }
+
+            // Now you can use startDate and endDate in your logic
             List<Transcation> transactions = await _dbcontext.transcations.Include(a => a.Category).Where(t => t.Date >= startDate && t.Date <= endDate).ToListAsync();
+
+
             //Income
             int totalIncome = transactions.Where(C => C.Category.Type == "Income").Sum(a => a.Amount);
             ViewBag.totalIncome = totalIncome.ToString("C0");
@@ -63,13 +73,14 @@ namespace Expense_Tracker.Controllers
             List<splineChartData> summaryexpense = transactions.Where(
               i => i.Category.Type == "Expense").GroupBy(j => j.Date).
             Select(k => new splineChartData()
-             {
-             day = k.First().Date.ToString("dd-MMM"),
-             Expense = k.Sum(w => w.Amount)
+            {
+                day = k.First().Date.ToString("dd-MMM"),
+                Expense = k.Sum(w => w.Amount)
             }).ToList();
 
+            int totaldays = (int)(endDate - startDate).TotalDays;
 
-            string[] Last7Days = Enumerable.Range(0, 7)
+            string[] Last7Days = Enumerable.Range(0, totaldays)
            .Select(i => startDate.AddDays(i).ToString("dd-MMM"))
            .ToArray();
 
@@ -81,12 +92,15 @@ namespace Expense_Tracker.Controllers
                                       select new
                                       {
                                           day = day,
-                                           Income = Income == null ? 0 : Income.Income,
+                                          Income = Income == null ? 0 : Income.Income,
                                           Expense = Expense == null ? 0 : Expense.Expense,
                                       };
             #endregion Spline chart End
 
-            return View();
+            #region Recent Transaction
+            ViewBag.RecentTransaction = _dbcontext.transcations.Include(c => c.Category).OrderByDescending(o => o.Date).Take(10).ToList();
+            #endregion
+            return View(date);
 
         }
         public class splineChartData
@@ -96,5 +110,6 @@ namespace Expense_Tracker.Controllers
             public int? Expense;
 
         }
+       
     }
 }

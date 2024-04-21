@@ -1,0 +1,13 @@
+﻿ @model Expense_Tracker.Models.DateRange
+<div class="col-md-3 offset-md-9">
+    <div id="wrapper" class="daterangepicker-section">
+        <div id="daterangepicker">
+            <form method="post" class="d-flex align-items-end">
+                <ejs-daterangepicker id="daterangepickerFor" ejs-for="@Model.value" apply="onApply">
+                </ejs-daterangepicker>
+                <input type="submit" id="submitButton" value="submit" class="btn btn-info" />
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/js/datapicker.js"></script>

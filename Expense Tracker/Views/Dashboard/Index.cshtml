@@ -1,8 +1,7 @@
-﻿@{
+﻿﻿@{
     ViewData["Dashbord"] = true;
-
 }
-
+<partial name="_Datapicker" />
 <div class="row mb-4">
     <div class="d-flex flex-row  Widget summary_Income">
         <div class="d-flex flex-column justify-content-center p-5">
@@ -33,7 +32,7 @@
 
 <div class="row mb-4">
     <div class="col-md-4">
-        <div class="widget chart">
+        <div class="Widget chart">
             <div class="p-4">
                 <h5 class="fw-bold">Expense By Category</h5>
             </div>
@@ -56,7 +55,7 @@
 
     <div class="col md-8">
 
-        <div class="widget chart">
+        <div class="Widget chart">
             <div class="p-4">
                 <h5 class="fw-bold">Income vs Expense</h5>
             </div>
@@ -87,5 +86,37 @@
             </ejs-chart>
         </div>
 
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="Widget">
+            <div class="p-4">
+                <h5 class="fw-bold">Recent Transaction</h5>
+            </div>
+            <div class="px-3 pb-4">
+                <ejs-grid id="recentTransaction" dataSource="@ViewBag.RecentTransaction" gridLines=None allowSorting=true>
+
+                    <e-grid-columns>
+                        <e-grid-column headertext="Category" field="categorywithIcon"></e-grid-column>
+
+                        <e-grid-column headertext="Amount" field="amount_symbol"></e-grid-column>
+
+                        <e-grid-column headertext="Date" format="MMM-dd-yy" field="Date"></e-grid-column>
+
+
+                    </e-grid-columns>
+                </ejs-grid>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="Widget h-100">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <span><i class="fa solid fa-plus fa-2xl"></i>Widget</span>
+            </div>
+        </div>
     </div>
 </div>
