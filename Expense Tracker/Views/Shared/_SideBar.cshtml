@@ -1,57 +1,82 @@
 ﻿
-<!-- sidebar element declaration -->
-<ejs-sidebar id="sidebar" width="200px">
-   @*  <e-content-template>
-        <div class="title-header">
-            <div style="display:inline-block"> Sidebar </div>
+
+@{
+    List<object> Menuitems = new List<object>();
+    Menuitems.Add(new
+    {
+        text = "General",
+        separator = true,
+    });
+    Menuitems.Add(new
+    {
+        text = "Dashbord",
+        url = "/",
+        iconCss = "fa-solid fa-folder-closed",
+    });
+
+    Menuitems.Add(new
+    {
+        text = "Categores",
+        url = "/Categories",
+        iconCss = "fa-solid fa-box",
+    });
+    Menuitems.Add(new
+    {
+        text = "Transactions",
+        url = "/Transaction",
+        iconCss = "fa-solid fa-arrow-right-arrow-left",
+    });
+    Menuitems.Add(new
+    {
+        text = "Extra",
+        separator = true,
+    });
+    Menuitems.Add(new
+    {
+        text = "Report",
+        url = "#",
+        iconCss = "fa-solid fa-chart-simple",
+    });
+    Menuitems.Add(new
+    {
+        text = "Setting",
+        url = "#",
+        iconCss = "fa-solid fa-gear",
+    });
+}
+<ejs-sidebar id="sidebar" width="200px" enableDock dockSize="100px">
+    <e-content-template>
+
+        <div class="logo-wrapper">
+            <div class="app-logo">
+                <img class="profile-pic" src="~/3784312.png" />
+
+            </div>
+            <div class="w-100"></div>
+            <i id="sidebar-toggler" class="fa-solid"></i>
+
         </div>
-    </e-content-template> *@
+        <div class="profile-wrapper">
+
+            <img class="profile-pic" src="~/snapchat-615093941.jpg" />
+            <div class="titles d-flex flex-column ps-3">
+                <h6 class="mb-0">Wallet App</h6>
+                <span class="text-muted">Sudarshan Shetty</span>
+            </div>
+
+        </div>
+        <ejs-menu id="menu" items="Menuitems" orientation="Vertical">
+
+        </ejs-menu>
+    </e-content-template>
 </ejs-sidebar>
-@* <!-- end of sidebar element -->
-<!--  Main Content declaration -->
-<div>
-    <div class="title default">Main content</div>
-    <div class="sub-title">
-        Place your primary content here.
-    </div>
-</div>
 
-<style>
-    /* sample level styles */
-    .center-align {
-        text-align: center;
-        padding: 20px;
-    }
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick = function () {
+            dockBar.toggle();
+        };
+    });
+</script>
 
-    .title {
-        text-align: center;
-        font-size: 20px;
-        padding: 15px;
-    }
-
-    .sub-title {
-        text-align: center;
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    body {
-        padding-top: 0px;
-        padding-bottom: 0px;
-    }
-
-    .title-header {
-        text-align: center;
-        font-size: 18px;
-        padding: 15px;
-    }
-
-    .title.default {
-        padding: 25px 15px 15px;
-    }
-    /* sidebar element styles */
-    #default-sidebar {
-        background-color: rgb(25, 118, 210);
-        color: #ffffff;
-    }
-</style> *@
